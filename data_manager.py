@@ -2,17 +2,19 @@ import glob
 import sys
 
 def read_data(tagname):
+    # defining the directory we want to open
     dir = "instaloader/#" + tagname + "/*.txt"
+    #   listing all files in dir
     all_files = glob.glob(dir)
     if len(all_files) == 0:
         raise RuntimeError('#' + hashtag + ' does not exist!')
-    count = 0
     data_list = []
-    print(len(all_files))
+
+    print('#' + hashtag + ' contains', len(all_files), 'files.')
+    # then open file by file and store that data, then close file.
     for file in all_files:
         opened_file = open(file, 'r')
         data = opened_file.read()
-        #data.strip('\n')
         data_list.append(data)
         opened_file.close()
 
