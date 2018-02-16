@@ -10,5 +10,5 @@ for file in all_files:
             random_list.append(str(line))
 
 
-print(random_list)
+
 print(len(random_list))
