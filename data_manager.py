@@ -68,7 +68,7 @@ def read_data(tagname):
         
         no_topics = 20
         tfidf_vectorizer = TfidfVectorizer(max_df = 0.95, min_df = 2, max_features = None, stop_words = 'english')
-        tfidf = tfidf_vectorizer.fit_transform(data_list)
+        tfidf = tfidf_vectorizer.fit_transform(full_post)
         tfidf_feature_names = tfidf_vectorizer.get_feature_names()
     
         nmf = NMF(n_components = no_topics, random_state = 1, alpha = .1, l1_ratio = .5, init = 'nndsvd').fit(tfidf)
@@ -76,9 +76,9 @@ def read_data(tagname):
         display_topics(nmf, tfidf_feature_names, no_top_words)
 
 
-hashtag_name = sys.argv[1]
-print('Trying to read directory: #' + hashtag_name)
-read_data(hashtag_name)
+tagname = sys.argv[1]
+print('Trying to read directory: #' + tagname)
+read_data(tagname)
 
 
     # check whether or not a file is containing \n for newline.
