@@ -43,19 +43,8 @@ def read_data(tagname):
             else:
                 # adding the caption text from the current post, to the caption string
                 current_caption += word + ' '
-
-            # removing emojis from text
-        emoji_pattern = re.compile("["
-                            u"\U0001F600-\U0001F64F"
-                            u"\U0001F300-\U0001F5FF"
-                            u"\U0001F680-\U0001F6FF"
-                            u"\U0001F1E0-\U0001F1FF"
-                            "]+", flags=re.UNICODE)
-        current_caption = emoji_pattern.sub(r'', current_caption)
-        current_hashtags = emoji_pattern.sub(r'', current_hashtags)
-
+                
         #remove \n and #
-        
         current_caption = current_caption.replace('\n',' ')
         current_hashtags = current_hashtags.replace('\n',' ')
         current_full_post += current_caption + current_hashtags
@@ -65,26 +54,16 @@ def read_data(tagname):
         hashtags.append(current_hashtags)
         captions.append(current_caption)
         full_post.append(current_full_post)
-        
-        no_topics = 20
-        tfidf_vectorizer = TfidfVectorizer(max_df = 0.95, min_df = 2, max_features = None, stop_words = 'english')
-        tfidf = tfidf_vectorizer.fit_transform(full_post)
-        tfidf_feature_names = tfidf_vectorizer.get_feature_names()
     
-        nmf = NMF(n_components = no_topics, random_state = 1, alpha = .1, l1_ratio = .5, init = 'nndsvd').fit(tfidf)
-        no_top_words = 10
-        display_topics(nmf, tfidf_feature_names, no_top_words)
-
+    no_topics = 20
+    tfidf_vectorizer = TfidfVectorizer(max_df = 0.95, min_df = 2, max_features = None, stop_words = 'english')
+    tfidf = tfidf_vectorizer.fit_transform(full_post)
+    tfidf_feature_names = tfidf_vectorizer.get_feature_names()
+    
+    nmf = NMF(n_components = no_topics, random_state = 1, alpha = .1, l1_ratio = .5, init = 'nndsvd').fit(tfidf)
+    no_top_words = 10
+    display_topics(nmf, tfidf_feature_names, no_top_words)
 
 tagname = sys.argv[1]
 print('Trying to read directory: #' + tagname)
 read_data(tagname)
-
-
-    # check whether or not a file is containing \n for newline.
-# newline_files = 0
-# for i in random_list:
-#     if '\n' in i and count < 1:
-#         newline_files += 1
-
-# print(newline_files)
