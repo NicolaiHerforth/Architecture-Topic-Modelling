@@ -4,6 +4,26 @@ import re
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.decomposition import NMF, LatentDirichletAllocation
 
+#Creation of stop words
+danish_stop_words = open('danish.txt', 'r')
+english_stop_words = open('english.txt', 'r')
+all_stop_words = []
+
+#Danish
+for word in danish_stop_words:
+    if word not in all_stop_words:
+        all_stop_words.append(word)
+    else:
+        pass
+#English
+for word in english_stop_words:
+    if word not in all_stop_words:
+        all_stop_words.append(word)
+    else:
+        pass
+    
+all_stop_words = map(lambda s: s.strip('\n'), all_stop_words)
+
 def display_topics(model, feature_names, no_top_words):
     for topic_idx, topic in enumerate(model.components_):
         print('Topic %d:' % (topic_idx))
@@ -56,7 +76,7 @@ def read_data(tagname):
         full_post.append(current_full_post)
     
     no_topics = 20
-    tfidf_vectorizer = TfidfVectorizer(max_df = 0.95, min_df = 2, max_features = None, stop_words = 'english')
+    tfidf_vectorizer = TfidfVectorizer(max_df = 0.95, min_df = 2, max_features = None, stop_words = all_stop_words)
     tfidf = tfidf_vectorizer.fit_transform(full_post)
     tfidf_feature_names = tfidf_vectorizer.get_feature_names()
     
