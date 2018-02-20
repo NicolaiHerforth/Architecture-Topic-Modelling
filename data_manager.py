@@ -1,4 +1,4 @@
-import glob 
+import glob
 import sys
 import re
 import os
@@ -43,11 +43,12 @@ def read_data(tagname):
 
         # creating an empty string for each post, ready to be filled with the content of the post
         current_caption = ""
+        current_hashtag = ""
 
         for word in i.split(' '):
             if '#' in word:
                 # adding the hashtags from the current post, to the hashtag string
-                hashtags.append(word)
+                current_hashtag += word + ' '
 
             else:
                 # adding the caption text from the current post, to the caption string
@@ -55,6 +56,7 @@ def read_data(tagname):
         
         # append the original lists with the string we just created.
         captions.append(current_caption)
+        hashtags.append(current_hashtag)
 
 
 
@@ -63,13 +65,8 @@ def read_data(tagname):
     hashtag_path = 'data/' + tagname + '/hashtags.txt'
     fullpost_path = 'data/' + tagname + '/full_post.txt'
 
- 
 
-    
-
-
-
-    # create a data directory with a tagname subdir. 
+    # create a data directory with a tagname subdir.
     # if they already exists, it will report so.
 
     os.system("mkdir data")
