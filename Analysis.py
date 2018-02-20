@@ -17,8 +17,10 @@ def get_language(caption):
         languages_dict[language] = len(common_elements) # language "score"
         
     most_rated_language = str(max(languages_dict, key = languages_dict.get))
+    if most_rated_language != 'english' and 'danish':
+        most_rated_language = 'Unknown'
+        
     return most_rated_language
-
 
 def import_data(locations):
     id = 0
@@ -39,7 +41,6 @@ def import_data(locations):
                 d[id] = list()
                 d[id].extend((line_a,line_b,line_c, lang, location))
                 id += 1
-
         
     #skal altid stå nederst
     for key in d.keys():
