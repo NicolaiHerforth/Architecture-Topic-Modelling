@@ -1,0 +1,3 @@
+Every coder knows the struggle that comes with changing a tiny function somewhere leaving a ton of errors throughout the system, because a lot of methods were dependending on it 🤣 
+It’s technical self-fuckery at it’s best !!😝🤘
+#error #dotnet #microsoft #debug #code #programmer #coderslife #cafe #shop #visualstudio #computer #it #windows #macbook #ipadpro #macbookpro #database #denmark #østerbro #copenhagen
