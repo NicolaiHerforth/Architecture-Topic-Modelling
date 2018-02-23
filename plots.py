@@ -35,16 +35,12 @@ def all_plots(df):
     
     #Defining plots + inputs
     trace1 = go.Bar(x = x[0:50], y = y[0:50], marker = dict(colorscale = 'jet', color = y[0:50]), text = "Word Counts")
-    trace1 = go.Bar(x=[1, 2], y=[1, 2])
-    trace2 = Bar(x=[1, 2], y=[1, 2])
-    trace3 = go.Scatter(x=[1, 2], y=[1, 2])
-    trace4 = go.Scatter(x=[1, 2], y=[1, 2])
-    trace5 = go.Scatter(x=[1, 2], y=[1, 2])
-    trace6 = go.Scatter(x=[1, 2], y=[1, 2])
+    trace2 = go.Bar(x = x[0:50], y = y[0:50], marker = dict(colorscale = 'jet', color = y[0:50]), text = "Word Counts")
+    trace3 = go.Bar(x = x[0:50], y = y[0:50], marker = dict(colorscale = 'jet', color = y[0:50]), text = "Word Counts")
+    trace4 = go.Bar(x = x[0:50], y = y[0:50], marker = dict(colorscale = 'jet', color = y[0:50]), text = "Word Counts")
+    trace5 = go.Bar(x = x[0:50], y = y[0:50], marker = dict(colorscale = 'jet', color = y[0:50]), text = "Word Counts")
+    trace6 = go.Bar(x = x[0:50], y = y[0:50], marker = dict(colorscale = 'jet', color = y[0:50]), text = "Word Counts")
 
-
-
-    
     #Assigning names for plots + layout
     fig = tools.make_subplots(rows=3, cols=2),
                           subplot_titles=(  'First Subplot',
@@ -58,8 +54,8 @@ def all_plots(df):
     fig.append_trace(trace1, 1, 1)
     fig.append_trace(trace2, 1, 2)
     fig.append_trace(trace3, 2, 1)
-    fig.append_trace(trace4, 1, 1)
-    fig.append_trace(trace5, 1, 2)
-    fig.append_trace(trace6, 2, 1)
+    fig.append_trace(trace4, 2, 2)
+    fig.append_trace(trace5, 3, 1)
+    fig.append_trace(trace6, 3, 2)
 
     fig['layout'].update(showlegend=False, title='Plots of Neighourhood:' + "location")
