@@ -11,6 +11,7 @@ def display_topics(model, feature_names, no_top_words):
 #Creation of stop words
 danish_stop_words = open('danish.txt', 'r')
 english_stop_words = open('english.txt', 'r')
+other_stop_words = open('others.txt', 'r')
 all_stop_words = []
 
 #Danish
@@ -26,6 +27,14 @@ for word in english_stop_words:
         all_stop_words.append(word)
     else:
         pass
+    
+#others
+for word in other_stop_words:
+    if word not in all_stop_words:
+        all_stop_words.append(word)
+    else:
+        pass
+print(len(all_stop_words))
 
 all_stop_words = map(lambda s: s.strip('\n'), all_stop_words)    
     
@@ -34,7 +43,7 @@ def nmf(tagname):
     full_post = open(dir, 'r')
        
     #NMF model
-    no_topics = 20
+    no_topics = 50
     no_top_words = 10
     
     tfidf_vectorizer = TfidfVectorizer(max_df = 0.95, min_df = 2, max_features = None, stop_words = all_stop_words)
