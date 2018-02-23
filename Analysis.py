@@ -54,14 +54,14 @@ def import_data(locations):
     id = 0
     d = {}
     for location in locations:
-        dir_cap = "data/" + location + "/captions_test.txt"
-        dir_full = "data/" + location + "/full_post_test.txt"
-        dir_hash = "data/" + location + "/hashtags_test.txt"
+        dir_cap = "data/" + location + "/captions.txt"
+        dir_full = "data/" + location + "/full_post.txt"
+        dir_hash = "data/" + location + "/hashtags.txt"
         print('Currently working ', location)
         with open(dir_full, 'r') as a, open(dir_cap, 'r') as b, open(dir_hash, 'r') as c:
             for line_a, line_b, line_c in zip(a, b, c):
                 #print(line_a, line_b, line_c)
-                
+
                 line_a = line_a.strip('\n')
                 line_a_no_hash = line_a.replace('#','')
                 line_b = line_b.strip('\n')
@@ -72,7 +72,7 @@ def import_data(locations):
                 d[id].extend((line_a,line_b,line_c, lang, location, senti))
                 #row = "\t".join(attrs)
                 id += 1
-    
+
 
 
     with open('dict.csv', 'w') as csv_file:
@@ -81,5 +81,5 @@ def import_data(locations):
         for key, value in d.items():
             writer.writerow([key,value[0],value[1],value[2],value[3],value[4],value[5]])
     print('JOBS DONE!')
-locations = ['valby']
+locations = ['valby', 'nørrebro', 'vesterbro', 'amager', 'torvehallerne', 'indreby', 'østerbro']
 import_data(locations)
