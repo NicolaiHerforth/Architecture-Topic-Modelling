@@ -24,7 +24,6 @@ def import_df(location):
 def plots(df):
     """
     Plots that goes into the paper!!
-    
     """
 
 
@@ -47,13 +46,13 @@ def all_plots(df):
 
     #Assigning tiles for plots + layout structure for subplots
     fig = tools.make_subplots(rows=3, cols=2),
-                          subplot_titles=(  'First Subplot',
-                                            'Second Subplot',
-                                            'Third Subplot',
-                                            '4 subplot',
-                                            '5 subplot',
-                                            '6 suplot',)
-
+                          subplot_titles=(  'Overall Topic Frequency Count',
+                                            'Most Frequent #Hashtag Count',
+                                            'Positive Sentiment Frequency Count',
+                                            'Negative Sentiment Frequency Count',
+                                            'Positive Sentiment Most Frequent Hashtag Count',
+                                            'Negative Sentiment Most Frequent Hashtag Count',)
+    
     #Append plots to fig. fig = variable holding all the subplots, in order to print out one complete plot in the end.
     fig.append_trace(trace1, 1, 1)
     fig.append_trace(trace2, 1, 2)
