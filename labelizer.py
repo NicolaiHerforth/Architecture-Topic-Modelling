@@ -3,8 +3,10 @@ from nltk.corpus import stopwords
 from afinn import Afinn
 import csv
 
-#Insert language
 def get_language(caption):
+
+    """Categorizing each entry with a language label""" 
+
 #Splitting text into lowers case words
     words = wordpunct_tokenize(caption)
     words = [word.lower() for word in words]
@@ -51,6 +53,18 @@ def sentiment(sentence, language):
 
 
 def import_data(locations):
+    """
+    Imports the data from each location into a dictionary of lists.
+    The dictionary will have the following indexing parameters:
+    key = unique id for entry
+    val0 = full text
+    val1 = caption
+    val2 = hashtags
+    val3 = language (DA, EN, unknown)
+    val4 = location
+    val5 = sentiment label (pos, neg, neu)
+    """
+
     id = 0
     d = {}
     for location in locations:
