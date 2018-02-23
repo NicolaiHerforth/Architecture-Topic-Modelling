@@ -18,13 +18,16 @@ def import_df(location):
                                 "hash_count_pos", 
                                 "hash_count_neg"])
 
-    #Drop rows from other location then desired
+    #Drop rows from other locations then desired
     df[df.locat != location]:
 
 def plots(df):
     """
     Plots that goes into the paper!!
+    
     """
+
+
     
 def all_plots(df):
     """
@@ -33,7 +36,8 @@ def all_plots(df):
     Documentation for plot formating: https://plot.ly/python/subplots/
     """
     
-    #Defining plots + inputs
+    #Defining plots + inputs Jet = Awesome looking plots. color = defines the ammount of colors to use.
+    #Adjust [0:50] depending on ammounts of top topics/hashes to include in barplot.
     trace1 = go.Bar(x = x[0:50], y = y[0:50], marker = dict(colorscale = 'jet', color = y[0:50]), text = "Word Counts")
     trace2 = go.Bar(x = x[0:50], y = y[0:50], marker = dict(colorscale = 'jet', color = y[0:50]), text = "Word Counts")
     trace3 = go.Bar(x = x[0:50], y = y[0:50], marker = dict(colorscale = 'jet', color = y[0:50]), text = "Word Counts")
@@ -41,7 +45,7 @@ def all_plots(df):
     trace5 = go.Bar(x = x[0:50], y = y[0:50], marker = dict(colorscale = 'jet', color = y[0:50]), text = "Word Counts")
     trace6 = go.Bar(x = x[0:50], y = y[0:50], marker = dict(colorscale = 'jet', color = y[0:50]), text = "Word Counts")
 
-    #Assigning names for plots + layout
+    #Assigning tiles for plots + layout structure for subplots
     fig = tools.make_subplots(rows=3, cols=2),
                           subplot_titles=(  'First Subplot',
                                             'Second Subplot',
@@ -50,7 +54,7 @@ def all_plots(df):
                                             '5 subplot',
                                             '6 suplot',)
 
-    #Append plots to fig
+    #Append plots to fig. fig = variable holding all the subplots, in order to print out one complete plot in the end.
     fig.append_trace(trace1, 1, 1)
     fig.append_trace(trace2, 1, 2)
     fig.append_trace(trace3, 2, 1)
@@ -58,4 +62,8 @@ def all_plots(df):
     fig.append_trace(trace5, 3, 1)
     fig.append_trace(trace6, 3, 2)
 
+    #Setting overall title for plots
     fig['layout'].update(showlegend=False, title='Plots of Neighourhood:' + "location")
+
+    #Export plot
+    py.iplot(fig, filename='plots.png')
