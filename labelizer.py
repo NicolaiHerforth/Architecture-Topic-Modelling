@@ -21,7 +21,7 @@ def get_language(caption):
         languages_dict[language] = len(common_elements) # language "score"
 
     most_rated_language = str(max(languages_dict, key = languages_dict.get))
-    if most_rated_language != 'english' and 'danish':
+    if most_rated_language != 'english' and most_rated_language != 'danish':
         most_rated_language = 'Unknown'
 
     return most_rated_language
