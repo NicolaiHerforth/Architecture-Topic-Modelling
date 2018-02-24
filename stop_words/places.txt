@@ -46,6 +46,7 @@ ringsted
 risskov
 roskilde
 torvehallerne
+torvehallernekbh
 usa
 valby
 vallensbæk
