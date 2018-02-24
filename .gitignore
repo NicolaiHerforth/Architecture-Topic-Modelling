@@ -1,0 +1,8 @@
+.DS_Store
+
+
+#in data folder
+data/.DS_Store
+
+#in instaloader folder
+instaloader/.DS_Store
