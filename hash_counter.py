@@ -12,14 +12,12 @@ def hash_count(location):
             for line in file:
                 line = line.strip('\n')
                 filter_words.append(line)
-    #print(filter_words)
-
 
     with open(dictionary, 'r') as file:
         rows = (line.split('\t') for line in file)
         d = {int(row[0]) : row[1:] for row in rows}
 
-    #Remove \n in column 5    
+#Remove \n in column 5    
     for row in d:
         d[row][5] = d[row][5][:-1]
         for tag in d[row][2].split(' '):

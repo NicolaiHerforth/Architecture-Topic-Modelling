@@ -1,53 +1,19 @@
 import sys
-import csv
+import glob 
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.decomposition import NMF, LatentDirichletAllocation
 
-#Creation of stop words
-danish_stop_words = open('stop_words/danish.txt', 'r')
-english_stop_words = open('stop_words/english.txt', 'r')
-places_stop_words = open('stop_words/places.txt', 'r')
-other_stop_words = open('stop_words/others.txt', 'r')
-place_promotion_stop_words = open('stop_words/place_promotion.txt', 'r')
-all_stop_words = []
 
-#Danish
-for word in danish_stop_words:
-    if word not in all_stop_words:
-        all_stop_words.append(word)
-    else:
-        pass
-    
-#English
-for word in english_stop_words:
-    if word not in all_stop_words:
-        all_stop_words.append(word)
-    else:
-        pass
-    
-#places
-for word in places_stop_words:
-    if word not in all_stop_words:
-        all_stop_words.append(word)
-    else:
-        pass
-    
-#others
-for word in other_stop_words:
-    if word not in all_stop_words:
-        all_stop_words.append(word)
-    else:
-        pass
+#Stop words
+filter_words = []
 
-#place_promotion
-for word in place_promotion_stop_words:
-    if word not in all_stop_words:
-        all_stop_words.append(word)
-    else:
-        pass
+all_files = glob.glob('stop_words/*.txt')
 
-all_stop_words = map(lambda s: s.strip('\n'), all_stop_words)    
-
+for files in all_files:
+    with open(files) as file:
+        for line in file:
+            line = line.strip('\n')
+            filter_words.append(line)
 
 #Opening the csv file as dict
 with open('dict.csv', 'r') as file:
@@ -80,7 +46,7 @@ def nmf(area):
     no_topics = 20
     no_top_words = 5
     
-    tfidf_vectorizer = TfidfVectorizer(max_df = 0.95, min_df = 2, max_features = 1000, stop_words = all_stop_words)
+    tfidf_vectorizer = TfidfVectorizer(max_df = 0.95, min_df = 2, max_features = 1000, stop_words = filter_words)
     tfidf = tfidf_vectorizer.fit_transform(lst)
     tfidf_feature_names = tfidf_vectorizer.get_feature_names()
         
