@@ -6,3 +6,6 @@ data/.DS_Store
 
 #in instaloader folder
 instaloader/.DS_Store
+
+
+stop_words/.DS_Store
