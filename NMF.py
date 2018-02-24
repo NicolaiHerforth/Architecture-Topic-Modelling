@@ -1,17 +1,13 @@
 import sys
+import csv
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.decomposition import NMF, LatentDirichletAllocation
 
-def display_topics(model, feature_names, no_top_words):
-    for topic_idx, topic in enumerate(model.components_):
-        print('Topic %d:' % (topic_idx))
-        print(' '.join([feature_names[i]
-            for i in topic.argsort()[:-no_top_words - 1:-1]]))
-
 #Creation of stop words
-danish_stop_words = open('danish.txt', 'r')
-english_stop_words = open('english.txt', 'r')
-other_stop_words = open('others.txt', 'r')
+danish_stop_words = open('stop_words/danish.txt', 'r')
+english_stop_words = open('stop_words/english.txt', 'r')
+places_stop_words = open('stop_words/places.txt', 'r')
+other_stop_words = open('stop_words/others.txt', 'r')
 all_stop_words = []
 
 #Danish
@@ -28,32 +24,64 @@ for word in english_stop_words:
     else:
         pass
     
+#places
+for word in places_stop_words:
+    if word not in all_stop_words:
+        all_stop_words.append(word)
+    else:
+        pass
+    
 #others
 for word in other_stop_words:
     if word not in all_stop_words:
         all_stop_words.append(word)
     else:
         pass
-print(len(all_stop_words))
 
 all_stop_words = map(lambda s: s.strip('\n'), all_stop_words)    
+
+
+#Opening the csv file as dict
+with open('dict.csv', 'r') as file:
+    rows = (line.split('\t') for line in file)
+    d = {int(row[0]) : row[1:] for row in rows}
+
+#Remove \n in column 5    
+for row in d:
+    d[row][5] = d[row][5][:-1]
+    d[row][0] = d[row][0].replace('#','')
+
+
+def display_topics(model, feature_names, no_top_words):
+    for topic_idx, topic in enumerate(model.components_):
+        print('Topic %d:' % (topic_idx))
+        print(' '.join([feature_names[i]
+            for i in topic.argsort()[:-no_top_words - 1:-1]]))
+
+def nmf(area, sentiment):
+#Create list with right specifications
+    lst = []
+    for row in d:
+        if d[row][3] == 'Unknown':
+            pass
+        else:
+            if d[row][4] == area and d[row][5] == sentiment:
+                lst.append(d[row][0])
+    print('Number of captions in analysis: ', len(lst))
     
-def nmf(tagname):
-    dir = "data/" + tagname + "/full_post.txt"
-    full_post = open(dir, 'r')
-       
-    #NMF model
-    no_topics = 50
+#Define no. of topics and words
+    no_topics = 20
     no_top_words = 10
     
-    tfidf_vectorizer = TfidfVectorizer(max_df = 0.95, min_df = 2, max_features = None, stop_words = all_stop_words)
-    tfidf = tfidf_vectorizer.fit_transform(full_post)
+    tfidf_vectorizer = TfidfVectorizer(max_df = 0.95, min_df = 2, max_features = 1000, stop_words = all_stop_words)
+    tfidf = tfidf_vectorizer.fit_transform(lst)
     tfidf_feature_names = tfidf_vectorizer.get_feature_names()
         
     nmf = NMF(n_components = no_topics, random_state = 1, alpha = .1, l1_ratio = .5, init = 'nndsvd').fit(tfidf)
     
     display_topics(nmf, tfidf_feature_names, no_top_words)
     
-tagname = sys.argv[1]
-print('NMF analysis of: ' + tagname)
-nmf(tagname)
+area = sys.argv[1]
+sentiment = sys.argv[2]
+print('Topic modelling: ' + area + ', ' + sentiment)
+nmf(area, sentiment)

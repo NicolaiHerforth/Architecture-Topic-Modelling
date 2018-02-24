@@ -36,20 +36,20 @@ def sentiment(sentence, language):
         afinn = Afinn(language = 'en')
 
         if afinn.score(sentence) > 0:
-            return "Positive"
+            return "positive"
         elif afinn.score(sentence) == 0:
-            return "Neutral"
+            return "neutral"
         else:
-            return "Negative"
+            return "negative"
     else:
         afinn = Afinn(language = 'da')
 
         if afinn.score(sentence) > 0:
-            return "Positive"
+            return "positive"
         elif afinn.score(sentence) == 0:
-            return "Neutral"
+            return "neutral"
         else:
-            return "Negative"
+            return "negative"
 
 
 def import_data(locations):

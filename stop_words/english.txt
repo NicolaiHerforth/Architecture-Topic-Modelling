@@ -90,6 +90,7 @@ of
 off
 on
 once
+one
 only
 or
 other
