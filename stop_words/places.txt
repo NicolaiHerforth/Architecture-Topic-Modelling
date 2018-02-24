@@ -5,6 +5,7 @@ amager
 australia
 brighton
 bristol
+brønshøj
 christianshavn
 cph
 danmark
@@ -44,6 +45,7 @@ paris
 ringsted
 risskov
 roskilde
+torvehallerne
 usa
 valby
 vallensbæk
