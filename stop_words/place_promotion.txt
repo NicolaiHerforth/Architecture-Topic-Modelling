@@ -1,29 +1,13 @@
-<<<<<<< HEAD
-0
-00
-11
-12
-15
-16
-17
-18
-40
-50
-2014
-2015
-2016
-2017
-2018
-kl
-kr
-str
-=======
 aokdk
+brugbyen
 copenhagenbible
 copenhagenlife
+copenhagenvisitorservice
+deldinby
 delditkbh
 govisitdenmark
 govisitcopenhagen
+københavnerliv
 ibyen
 lovecopenhagen
 lovekbh
@@ -33,10 +17,8 @@ mitvalby
 opdagdanmark
 visitcopenhagen
 visitdenmark
+visitfrederiksberg
 voresby
 voreskbh
 voreskøbenhavn
 wearenørrebro
-
-
->>>>>>> b352ac676617b221c51fb311cb5f290ac0347dbf

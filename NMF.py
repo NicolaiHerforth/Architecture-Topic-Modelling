@@ -8,6 +8,7 @@ danish_stop_words = open('stop_words/danish.txt', 'r')
 english_stop_words = open('stop_words/english.txt', 'r')
 places_stop_words = open('stop_words/places.txt', 'r')
 other_stop_words = open('stop_words/others.txt', 'r')
+place_promotion_stop_words = open('stop_words/place_promotion.txt', 'r')
 all_stop_words = []
 
 #Danish
@@ -38,6 +39,13 @@ for word in other_stop_words:
     else:
         pass
 
+#place_promotion
+for word in place_promotion_stop_words:
+    if word not in all_stop_words:
+        all_stop_words.append(word)
+    else:
+        pass
+
 all_stop_words = map(lambda s: s.strip('\n'), all_stop_words)    
 
 
@@ -51,21 +59,20 @@ for row in d:
     d[row][5] = d[row][5][:-1]
     d[row][0] = d[row][0].replace('#','')
 
-
 def display_topics(model, feature_names, no_top_words):
     for topic_idx, topic in enumerate(model.components_):
         print('Topic %d:' % (topic_idx))
         print(' '.join([feature_names[i]
             for i in topic.argsort()[:-no_top_words - 1:-1]]))
 
-def nmf(area, sentiment):
+def nmf(area):
 #Create list with right specifications
     lst = []
     for row in d:
         if d[row][3] == 'Unknown':
             pass
         else:
-            if d[row][4] == area and d[row][5] == sentiment:
+            if d[row][4] == area:
                 lst.append(d[row][0])
     print('Number of captions in analysis: ', len(lst))
     
@@ -82,6 +89,5 @@ def nmf(area, sentiment):
     display_topics(nmf, tfidf_feature_names, no_top_words)
     
 area = sys.argv[1]
-sentiment = sys.argv[2]
-print('Topic modelling: ' + area + ', ' + sentiment)
-nmf(area, sentiment)
+print('Topic modelling: ' + area)
+nmf(area)
