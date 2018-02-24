@@ -77,8 +77,8 @@ def nmf(area):
     print('Number of captions in analysis: ', len(lst))
     
 #Define no. of topics and words
-    no_topics = 20
-    no_top_words = 10
+    no_topics = 15
+    no_top_words = 5
     
     tfidf_vectorizer = TfidfVectorizer(max_df = 0.95, min_df = 2, max_features = 1000, stop_words = all_stop_words)
     tfidf = tfidf_vectorizer.fit_transform(lst)

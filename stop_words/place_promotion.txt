@@ -5,6 +5,7 @@ copenhagenlife
 copenhagenvisitorservice
 deldinby
 delditkbh
+elskditvalby
 govisitdenmark
 govisitcopenhagen
 københavnerliv
@@ -14,11 +15,15 @@ lovekbh
 mitkbh
 mitkøbenhavn
 mitvalby
+mitøsterbro
 opdagdanmark
+sharingcph
+tipkbh
 visitcopenhagen
 visitdenmark
 visitfrederiksberg
 voresby
 voreskbh
 voreskøbenhavn
+voresnørrebro
 wearenørrebro
