@@ -1,6 +1,6 @@
 import plotly.plotly as py
 import plotly.graph_objs as go
-import pandas as pd 
+import pandas as pd
 
 def import_df(location):
     """
