@@ -21,6 +21,7 @@ def import_df(location):
     #Drop rows from other locations then desired
     df[df.locat != location]:
 
+        
 def plots(df):
     """
     Plots that goes into the paper!!
