@@ -4,6 +4,8 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 import plotly
 
+py.sign_in('DavidMortensen', 'qxmcmG3FAszaZ8Tf9tyk')
+
 def hash_count(location):
     dictionary = 'dict.csv'
     c = Counter()
@@ -55,10 +57,11 @@ def hash_count(location):
         tag_count.append(i[1])
     
     data = [go.Bar(x = tag_name, y = tag_count, marker= dict(colorscale='Jet', color = tag_count))]
-    layout = go.Layout(title='Most Frequent #Hashtag used for: ' + location,)
+    layout = go.Layout(title='Most Frequent #Hashtag used for: ' + location, autosize=False, width=1400, height=1000)
 
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename= location + ' barchart.png')
+    #plotly.offline.plot(fig, filename= location + ' barchart.svg')
+    py.image.save_as(fig, filename=location + '_barchart.png')
 
 
 locations = ['valby', 'nørrebro', 'vesterbro', 'amager', 'torvehallerne', 'indreby', 'østerbro']
