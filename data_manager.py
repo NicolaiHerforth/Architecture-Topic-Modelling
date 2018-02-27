@@ -19,6 +19,10 @@ def extract_emojis(str):
     return string
 
 def read_data(tagname):
+    """
+    Reading in scraped data and structuring into a dict.
+    Seperating required fields values. Also applies emoji extract.
+    """
     # defining the directory we want to open
     dir = "instaloader/#" + tagname + "/*.txt"
     tknzr = TweetTokenizer()
