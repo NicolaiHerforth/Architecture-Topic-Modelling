@@ -31,7 +31,7 @@ def hash_count(location):
         d[row][5] = d[row][5][:-1]
         #print(d[row][5])
         for tag in d[row][2].split(' '):
-            if (d[row][4] != location or d[row][3] == 'Unknown' or d[row][5] != 'negative'):
+            if (d[row][4] != location or d[row][3] == 'Unknown'):
                 pass
             else:
                 #print(d[row][4], d[row][3], d[row][5])
