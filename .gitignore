@@ -1,5 +1,6 @@
 .DS_Store
 **/.DS_Store
+*.DS_Store
 
 #in data folder
 data/.DS_Store
