@@ -1,8 +1,15 @@
 .DS_Store
-
+**/.DS_Store
 
 #in data folder
 data/.DS_Store
+data/amager/.DS_Store
+data/indreby/.DS_Store
+data/nørrebro/.DS_Store
+data/østerbro/.DS_Store
+data/torvehallerne/.DS_Store
+data/valby/.DS_Store
+data/vesterbro/.DS_Store
 
 #in instaloader folder
 instaloader/.DS_Store
