@@ -61,7 +61,7 @@ def hash_count(location):
     layout = go.Layout(title='Most Frequent #Hashtag used for: ' + location, autosize=False, width=1400, height=1000)
 
     fig = go.Figure(data=data, layout=layout)
-    #plotly.offline.plot(fig, filename= location + ' barchart.svg')
+    plotly.offline.plot(fig, filename= location + ' barchart.svg')
     py.image.save_as(fig, filename=location + '_barchart.png')
 
 # locations is the list of areas we want to work with. The for loop below iterates over this list, and makes sure
