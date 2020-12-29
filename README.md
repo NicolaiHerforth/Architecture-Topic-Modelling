@@ -1,5 +1,7 @@
-# Mini-Project-1
-Git Repo for "Mini Project 1: Quality of Life Meets Metropolitan Ambitions"
+# Quality of Life Meets Metropolitan Ambition
+Utilizing Natural Language Processing, we apply topic modelling on data scraped from instagran about copenhagen.
+
+![Results](https://github.com/tograh/testrepository/3DTest.png 875)
 
 ## Instaloader scrape
 
