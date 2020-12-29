@@ -1,5 +1,5 @@
 # Quality of Life Meets Metropolitan Ambition
-Utilizing Natural Language Processing, we apply topic modelling on data scraped from instagran about copenhagen.
+Utilizing Natural Language Processing, we apply topic modelling on data scraped from instagram about copenhagen.
 
 ![Results](https://github.com/NicolaiHerforth/Mini-Project-1-Quality-of-Life-Meets-Metropolitan-Ambitions/blob/master/Results/Screenshot%202020-12-29%20at%2017.03.38.png?raw=true)
 
